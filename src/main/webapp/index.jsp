@@ -142,7 +142,7 @@
     <%--    标题--%>
     <div class="row">
         <div class="col-md-12">
-            <h1 style="color: steelblue">SSM-CRUD By JiaZQ</h1>
+            <h1 style="color: darkcyan">SSM-CRUD By JiaZQ</h1>
         </div>
     </div>
     <%--    按钮--%>
