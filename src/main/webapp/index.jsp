@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>All</title>
+    <title>AllStudent1</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>成绩管理系统</title>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
