@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namespace:名称空间，写接口的全类名，相当于告诉mybatis这个配置文件是实现哪个接口的
+
+-->
+<mapper namespace="com.jzq.dao.StudentDao">
+
+<!--    使用二级缓存-->
+<!--    <cache></cache>-->
+
+<!--    使用第三方缓存框架-->
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"></cache>
+
+    <select id="getStudentById" resultMap="studentMap">
+        select * from student where id=#{id}
+    </select>
+    <!--    查询所有学生-->
+    <select id="getAllStudent" resultMap="studentMap">
+        select * from student
+    </select>
+    <!--    删除学生-->
+    <delete id="deleteById">
+        delete from student where id=#{id}
+    </delete>
+    <!--    更新信息-->
+    <update id="updateStudent">
+        update student
+        <set>
+            <if test="name!=null and !name.equals(&quot;&quot;)">
+                student_name = #{name},
+            </if>
+            <if test="chinese!=null and chinese>=0 and chinese &lt;=100">
+                chinese = #{chinese},
+            </if>
+            <if test="math!=null and math>=0 and math &lt;=100">
+                math = #{math},
+            </if>
+            <if test="english!=null and english>=0 and english &lt;=100">
+                english = #{english}
+            </if>
+        </set>
+        <where>
+            id=#{id}
+        </where>
+    </update>
+<!--    新增学生-->
+    <insert id="insertStudent">
+        insert into student(id,student_name,chinese,math,english)
+        values (#{student.id},#{student.name},#{student.chinese},#{student.math},#{student.english})
+    </insert>
+
+    <resultMap id="studentMap" type="com.jzq.bean.Student">
+        <id property="id" column="id"></id>
+        <result property="name" column="student_name"></result>
+        <result property="math" column="math"></result>
+        <result property="chinese" column="chinese"></result>
+        <result property="english" column="english"></result>
+    </resultMap>
+</mapper>
